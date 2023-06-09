@@ -1,5 +1,10 @@
 import { GraphQLClient } from 'graphql-request';
 import HOME_PAGE_QUERY from './queries/homePage';
+import PHOTOGRAPHY_PAGE_QUERY from './queries/photographyPage';
+import SINGLE_PHOTOGRAPHY_PROJECT_QUERY from './queries/singlePhotographyProject';
+import WRITTEN_PAGE_QUERY from './queries/writtenPage';
+import PRODUCTION_PAGE_QUERY from './queries/productionPage';
+import SINGLE_PRODUCTION_PROJECT_QUERY from './queries/singleProductionProject';
 import SITE_QUERY from './queries/siteData';
 
 type Request = {
@@ -35,3 +40,46 @@ export const getHomePage = async () => {
 
 	return data?.homePage;
 };
+
+export const getAllPhotography = async () => {
+	const data = await request({
+		query: PHOTOGRAPHY_PAGE_QUERY
+	});
+
+	return data?.allPhotographyProjects;
+};
+
+export async function getPhotographyProject(slug: string) {
+	const data = await request({
+		query: SINGLE_PHOTOGRAPHY_PROJECT_QUERY,
+		variables: { slug },
+	});
+
+	return data?.photographyProject;
+}
+
+export const getAllWritten = async () => {
+	const data = await request({
+		query: WRITTEN_PAGE_QUERY
+	});
+	
+	return data?.allWrittenProjects;
+};
+
+
+export const getAllProduction = async () => {
+	const data = await request({
+		query: PRODUCTION_PAGE_QUERY
+	});
+
+	return data?.allProductionProjects;
+};
+
+export async function getProductionProject(slug: string) {
+	const data = await request({
+		query: SINGLE_PRODUCTION_PROJECT_QUERY,
+		variables: { slug },
+	});
+
+	return data?.productionProject;
+}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { getHomePage, getSiteData } from '../lib/datocms';
+import { getAllProduction, getSiteData } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { SiteData } from '../shared/types/types';
+import { SiteData } from '../../shared/types/types';
 
 const PageWrapper = styled.div``;
 
@@ -22,7 +22,7 @@ const Page = (props: Props) => {
 	return (
 	<PageWrapper>
 		<NextSeo
-			title="Kim Landy - Home"
+			title="Kim Landy - Production"
 			description={siteData.seoDescription || ''}
 		/>
 		Home
@@ -31,7 +31,7 @@ const Page = (props: Props) => {
 };
 
 export async function getStaticProps() {
-	const data = await getHomePage();
+	const data = await getAllProduction();
 	const siteData = await getSiteData();
 
 	return {

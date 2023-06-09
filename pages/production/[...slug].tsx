@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { getHomePage, getSiteData } from '../lib/datocms';
+import { getSiteData, getProductionProject } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { SiteData } from '../shared/types/types';
+import { SiteData } from '../../shared/types/types';
+import { getAllProduction } from '../../lib/datocms';
 
 const PageWrapper = styled.div``;
 
@@ -22,7 +23,7 @@ const Page = (props: Props) => {
 	return (
 	<PageWrapper>
 		<NextSeo
-			title="Kim Landy - Home"
+			title="COMPLETE"
 			description={siteData.seoDescription || ''}
 		/>
 		Home
@@ -30,8 +31,19 @@ const Page = (props: Props) => {
 	);
 };
 
-export async function getStaticProps() {
-	const data = await getHomePage();
+export async function getStaticPaths() {
+	const allProduction = await getAllProduction();
+
+	return {
+		paths: allProduction.map((item: any) => {
+			return `/production/${item?.slug}`;
+		}),
+		fallback: true
+	};
+}
+
+export async function getStaticProps({ params }: any) {
+	const data = await getProductionProject(params.slug[0]);
 	const siteData = await getSiteData();
 
 	return {
