@@ -29,3 +29,13 @@ export type Transitions = {
 		}
 	}
 };
+
+export type SiteData ={
+	seoDescription: string;
+	phone: string;
+	instagramUrl: string;
+	instagramHandle: string;
+	email: string;
+	address: string;
+	acknowledgementOfCountry: string;
+}
