@@ -8,7 +8,11 @@ import { StyledProps } from '../../../shared/types/types';
 const PageHeaderWrapper = styled.div`
 	padding: ${pxToRem(16)} 0;
 	margin-bottom: ${pxToRem(80)};
-	
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		opacity: 0;
+		pointer-events: none;
+	}
 `;
 
 const PageHeaderInner = styled.div`

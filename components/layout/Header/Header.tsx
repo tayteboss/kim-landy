@@ -7,6 +7,7 @@ import useActiveLink from '../../../hooks/useActiveLink';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 const HeaderWrapper = styled.header`
 	padding: ${pxToRem(16)};
@@ -19,6 +20,10 @@ const HeaderWrapper = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	pointer-events: none;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: ${pxToRem(16)} ${pxToRem(8)};
+	}
 `;
 
 const LinkWrapper = styled.div`
@@ -81,6 +86,7 @@ type Props = {
 
 const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 	const scrolled = useScrolled({ amount: 50 });
+	const viewport = useViewportWidth();;
 
 	const router = useRouter();
 	router?.events?.on('routeChangeStart', () => setMenuIsActive(false));
@@ -102,7 +108,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 			</LinkWrapper>
 			<MenuTrigger
 				className="link-style"
-				$isActive={scrolled}
+				$isActive={scrolled || viewport === 'tabletPortrait' || viewport === 'mobile'}
 				onClick={() => setMenuIsActive(!menuIsActive)}
 			>
 				{menuIsActive ? 'Close' : 'Menu'}

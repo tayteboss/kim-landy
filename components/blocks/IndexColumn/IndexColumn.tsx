@@ -21,7 +21,7 @@ const LinkTag = styled.a<StyledProps>`
 	display: inline-block;
 
 	&.link-style {
-		color: ${(props) => props.$isActive ? 'var(--colour-black)' : 'var(--colour-black400)'};
+		color: ${(props) => props.$isActive ? 'var(--colour-white)' : 'var(--colour-black400)'};
 	}
 `;
 
