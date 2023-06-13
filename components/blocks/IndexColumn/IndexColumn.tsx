@@ -28,9 +28,6 @@ const LinkTag = styled.a<StyledProps>`
 const IndexColumn = () => {
 	const activeLink = useActiveLink();
 
-	console.log('activeLink', activeLink);
-	
-
 	return (
 		<IndexColumnWrapper className="column-block-style">
 			<LayoutGrid>

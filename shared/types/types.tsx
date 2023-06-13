@@ -43,6 +43,7 @@ export type SiteData ={
 export type StyledProps = {
 	$isActive?: boolean;
 	$isTop?: boolean;
+	$isFooterType?: boolean;
 };
 
 export type ContentColumnProps = {

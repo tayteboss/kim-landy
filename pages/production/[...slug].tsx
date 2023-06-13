@@ -3,30 +3,38 @@ import { getSiteData, getProductionProject } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../../shared/types/types';
 import { getAllProduction } from '../../lib/datocms';
+import { motion } from 'framer-motion';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {},
-	siteData: SiteData
+	data: {};
+	siteData: SiteData;
+	pageTransitionVariants: {};
 };
 
 const Page = (props: Props) => {
 	const {
 		data,
-		siteData
+		siteData,
+		pageTransitionVariants
 	} = props;
 
 	console.log('data', data);
 	console.log('siteData', siteData);
 
 	return (
-	<PageWrapper>
+	<PageWrapper
+		variants={pageTransitionVariants}
+		initial="hidden"
+		animate="visible"
+		exit="hidden"
+	>
 		<NextSeo
 			title="COMPLETE"
 			description={siteData.seoDescription || ''}
 		/>
-		Home
+		Production Single
 	</PageWrapper>
 	);
 };

@@ -257,6 +257,33 @@ export const GlobalStyles = createGlobalStyle`
 				}
 			}
 		}
+
+		&--animated-right {
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 0;
+				width: 4px;
+				height: 4px;
+				background: var(--colour-black);
+				opacity: 0;
+				transform: translateY(-50%);
+
+				transition: all var(--transition-speed-default) var(--transition-ease);
+			}
+
+			&:hover {
+				transform: translateX(-8px);
+
+				&::before {
+					opacity: 1;
+					transform: translateX(8px) translateY(-50%);
+				}
+			}
+		}
 	}
 
 	.column-grid-style {

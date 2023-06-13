@@ -2,30 +2,38 @@ import styled from 'styled-components';
 import { getAllWritten, getSiteData } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../../shared/types/types';
+import { motion } from 'framer-motion';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {},
-	siteData: SiteData
+	data: {};
+	siteData: SiteData;
+	pageTransitionVariants: {};
 };
 
 const Page = (props: Props) => {
 	const {
 		data,
-		siteData
+		siteData,
+		pageTransitionVariants
 	} = props;
 
 	console.log('data', data);
 	console.log('siteData', siteData);
 
 	return (
-	<PageWrapper>
+	<PageWrapper
+		variants={pageTransitionVariants}
+		initial="hidden"
+		animate="visible"
+		exit="hidden"
+	>
 		<NextSeo
 			title="Kim Landy - Written"
 			description={siteData.seoDescription || ''}
 		/>
-		Home
+		Written
 	</PageWrapper>
 	);
 };
