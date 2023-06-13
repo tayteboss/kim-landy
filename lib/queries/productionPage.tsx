@@ -5,6 +5,9 @@ const PRODUCTION_PAGE_QUERY: string = `
 		allProductionProjects {
 			slug
 			title
+			information {
+				${richTextFragment}
+			}
 			thumbnailVideoSnippet {
 				${videoFragment}
 			}

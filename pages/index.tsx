@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 import { getHomePage, getSiteData } from '../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { SiteData } from '../shared/types/types';
-import LayoutGrid from '../components/common/LayoutGrid';
+import { FeaturedProjects, SiteData } from '../shared/types/types';
 import PageHeader from '../components/layout/PageHeader';
+import ContentColumn from '../components/blocks/ContentColumn';
+import EnquiryColumn from '../components/blocks/EnquiryColumn';
+import FeaturedProjectsColumn from '../components/blocks/FeaturedProjectsColumn';
+import FeaturedHomeImages from '../components/blocks/FeaturedHomeImages';
 
 const PageWrapper = styled.div``;
 
 type Props = {
-	data: {},
+	data: {
+		about: {}
+		clients: {}
+		featuredProjects: FeaturedProjects[];
+		featuredImages: [];
+	},
 	siteData: SiteData
 };
 
@@ -27,9 +35,22 @@ const Page = (props: Props) => {
 			title="Kim Landy - Home"
 			description={siteData.seoDescription || ''}
 		/>
-		<LayoutGrid>
-			<PageHeader />
-		</LayoutGrid>
+		<PageHeader />
+		<ContentColumn
+			title="About"
+			richText={data?.about}
+		/>
+		<EnquiryColumn title="Enquiry" />
+		<ContentColumn
+			title="Clients"
+			richText={data?.clients}
+		/>
+		<FeaturedProjectsColumn
+			data={data?.featuredProjects}
+		/>
+		<FeaturedHomeImages
+			data={data?.featuredImages}
+		/>
 	</PageWrapper>
 	);
 };

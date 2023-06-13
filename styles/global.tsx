@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
+import pxToRem from '../utils/pxToRem';
 
 export const GlobalStyles = createGlobalStyle`
 	:root {
@@ -15,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
 		--transition-speed-slow: ${theme.transitionSpeed.slow};
 		--transition-speed-extra-slow: ${theme.transitionSpeed.extraSlow};
 		--transition-ease: cubic-bezier(0.65, 0, 0.35, 1);
+		--footer-image-height: 100px;
 	}
 
 	* {
@@ -53,7 +55,6 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
-		min-height: 300vh;
 	}
 
 	input,
@@ -163,6 +164,63 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		a {
+			color: var(--colour-black400);
+
+			&:not():last-child {
+				margin-bottom: ${pxToRem(16)};
+			}
+		}
+
+		a {
+			text-decoration: none;
+
+			transition: all var(--transition-speed-default) var(--transition-ease);
+
+			&:hover {
+				color: var(--colour-black);
+			}
+		}
+
+		&--list {
+			a {
+				position: relative;
+				display: inline-block;
+
+				&::before {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 0;
+					width: 4px;
+					height: 4px;
+					background: var(--colour-black);
+					opacity: 0;
+					transform: translateY(-50%);
+
+					transition: all var(--transition-speed-default) var(--transition-ease);
+				}
+
+				&:hover {
+					transform: translateX(8px);
+
+					&::before {
+						opacity: 1;
+						transform: translateX(-8px) translateY(-50%);
+					}
+				}
+			}
+		}
+	}
+
 	.link-style {
 		color: var(--colour-black400);
 		text-decoration: none;
@@ -171,6 +229,79 @@ export const GlobalStyles = createGlobalStyle`
 
 		&:hover {
 			color: var(--colour-black);
+		}
+
+		&--animated {
+			position: relative;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: 4px;
+				height: 4px;
+				background: var(--colour-black);
+				opacity: 0;
+				transform: translateY(-50%);
+
+				transition: all var(--transition-speed-default) var(--transition-ease);
+			}
+
+			&:hover {
+				transform: translateX(8px);
+
+				&::before {
+					opacity: 1;
+					transform: translateX(-8px) translateY(-50%);
+				}
+			}
+		}
+	}
+
+	.column-grid-style {
+		position: relative;
+		grid-column: 4 / span 3;
+	}
+
+	.column-block-style {
+		margin-bottom: ${pxToRem(80)};
+
+		&__title {
+			grid-column: 2 / span 2;
+			position: sticky;
+			top: ${pxToRem(16)};
+			text-align: right;
+		}
+	}
+
+	.secondary-link-style {
+		color: var(--colour-black400);
+		position: relative;
+		transform: translateX(14px);
+		display: inline-block;
+		text-decoration: none;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: -12px;
+			width: 8px;
+			height: 1px;
+			background: var(--colour-black400);
+
+			transition: all var(--transition-speed-default) var(--transition-ease);
+		}
+
+		&:hover {
+			color: var(--colour-black);
+
+			&::before {
+				background: var(--colour-black)
+			}
 		}
 	}
 
@@ -183,6 +314,20 @@ export const GlobalStyles = createGlobalStyle`
 		&--in-view
 		{
 			opacity: 1;
+		}
+	}
+
+	.view-element-title-fade-in
+	{
+		opacity: 0;
+		transform: translateX(15px);
+
+		transition: opacity 300ms ease;
+
+		&--in-view
+		{
+			opacity: 1;
+			transform: translateX(0);
 		}
 	}
 

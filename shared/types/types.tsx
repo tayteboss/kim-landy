@@ -39,3 +39,31 @@ export type SiteData ={
 	address: string;
 	acknowledgementOfCountry: string;
 }
+
+export type StyledProps = {
+	$isActive?: boolean;
+	$isTop?: boolean;
+};
+
+export type ContentColumnProps = {
+	title: string;
+	richText: {
+		about?: {};
+		clients?: {};
+	}
+}
+
+export type FeaturedProjects = {
+	key?: number;
+	slug: string;
+	title: string;
+	information?: {};
+	excerpt?: string;
+	_modelApiKey?: string;
+}
+
+export type FeaturedHomeImagesType = {
+	image: {
+		url: string;
+	}
+}
