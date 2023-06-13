@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { getHomePage, getSiteData } from '../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../shared/types/types';
+import LayoutGrid from '../components/common/LayoutGrid';
+import PageHeader from '../components/layout/PageHeader';
 
 const PageWrapper = styled.div``;
 
@@ -25,7 +27,9 @@ const Page = (props: Props) => {
 			title="Kim Landy - Home"
 			description={siteData.seoDescription || ''}
 		/>
-		Home
+		<LayoutGrid>
+			<PageHeader />
+		</LayoutGrid>
 	</PageWrapper>
 	);
 };

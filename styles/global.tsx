@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
+		min-height: 300vh;
 	}
 
 	input,
@@ -159,6 +160,17 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${theme.mediaBreakpoints.mobile}
 		{
 			font-size: ${theme.sizeMobile.body};
+		}
+	}
+
+	.link-style {
+		color: var(--colour-black400);
+		text-decoration: none;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		&:hover {
+			color: var(--colour-black);
 		}
 	}
 
