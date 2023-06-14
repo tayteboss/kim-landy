@@ -46,7 +46,7 @@ const App = (props: Props) => {
 
 		const timer = setTimeout(() => {
 			Cookies.set('visited', 'true', { expires: 1, path: '' });
-		}, 5000);
+		}, 3000);
 
 		return () => {
 			clearTimeout(timer);
@@ -57,7 +57,7 @@ const App = (props: Props) => {
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={theme}>
-				<Layout>
+				<Layout hasVisited={hasVisited}>
 					<AnimatePresence
 						mode="wait"
 						onExitComplete={() => handleExitComplete()}

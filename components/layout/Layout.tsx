@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { ReactNode, useEffect, useState } from 'react';
 import ScrollDetector from '../common/ScrollDetector';
 import MenuCover from '../blocks/MenuCover';
+import AOC from '../blocks/AOC';
 
 const Main = styled.main`
 	opacity: 1;
@@ -13,11 +14,13 @@ const Main = styled.main`
 
 type Props = {
 	children: ReactNode;
+	hasVisited: boolean;
 };
 
 const Layout = (props: Props) => {
 	const {
-		children
+		children,
+		hasVisited
 	} = props;
 
 	const [menuIsActive, setMenuIsActive] = useState(false);
@@ -46,6 +49,7 @@ const Layout = (props: Props) => {
 
 	return (
 		<>
+			<AOC hasVisited={hasVisited} />
 			<Header
 				menuIsActive={menuIsActive}
 				setMenuIsActive={setMenuIsActive}
