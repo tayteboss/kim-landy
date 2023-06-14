@@ -60,6 +60,10 @@ const LinkTag = styled.a<StyledProps>`
 	&.link-style {
 		color: ${(props) => props.$isActive ? 'var(--colour-black)' : 'var(--colour-black400)'};
 	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		margin-bottom: ${pxToRem(4)};
+	}
 `;
 
 const wrapperVariants = {
@@ -85,7 +89,7 @@ type Props = {
 };
 
 const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
-	const scrolled = useScrolled({ amount: 50 });
+	const scrolled = useScrolled({ amount: 30 });
 	const viewport = useViewportWidth();;
 
 	const router = useRouter();
@@ -107,7 +111,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 				</Link>
 			</LinkWrapper>
 			<MenuTrigger
-				className="link-style"
+				className="link-style menu-trigger"
 				$isActive={scrolled || viewport === 'tabletPortrait' || viewport === 'mobile'}
 				onClick={() => setMenuIsActive(!menuIsActive)}
 			>

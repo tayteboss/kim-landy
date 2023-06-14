@@ -293,8 +293,17 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.main,
+	.footer {
+		transition: all var(--transition-speed-slow) var(--transition-ease);
+	}
+
 	.is-at-bottom {
 		background: var(--colour-black);
+
+		.menu-trigger {
+			opacity: 0;
+		}
 
 		.main {
 			opacity: 0;
@@ -318,6 +327,13 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.menu-open {
+		.main,
+		.footer {
+			filter: blur(3px);
+		}
+	}
+
 	.column-grid-style {
 		position: relative;
 		grid-column: 4 / span 3;
@@ -333,6 +349,10 @@ export const GlobalStyles = createGlobalStyle`
 
 	.column-block-style {
 		margin-bottom: ${pxToRem(80)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			margin-bottom: ${pxToRem(60)};
+		}
 
 		@media ${theme.mediaBreakpoints.mobile} {
 			padding: 0 ${pxToRem(8)};

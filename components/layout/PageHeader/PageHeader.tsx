@@ -19,6 +19,10 @@ const PageHeaderInner = styled.div`
 	grid-column: 4 / span 6;
 	display: flex;
 	align-items: center;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		grid-column: 1 / -1;
+	}
 `;
 
 const LinkWrapper = styled.div`

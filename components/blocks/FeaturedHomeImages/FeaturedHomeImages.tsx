@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FeaturedHomeImagesType, StyledProps } from '../../../shared/types/types';
 import LayoutGrid from '../../common/LayoutGrid';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 const FeaturedHomeImagesWrapper = styled.div`
 	position: fixed;
@@ -12,11 +13,15 @@ const FeaturedHomeImagesWrapper = styled.div`
 	pointer-events: none;
 `;
 
-const FeaturedHomeImagesInner = styled.div`
+const FeaturedHomeImagesInner = styled.div<StyledProps>`
 	grid-column: 7 / -1;
 	padding-top: 80%;
 	position: relative;
 	background: var(--colour-black400);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		grid-column: 3 / -1;
+	}
 `;
 
 const ImageWrapper = styled.div<StyledProps>`
@@ -41,6 +46,17 @@ const FeaturedHomeImages = (props: Props) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	const [count, setCount] = useState(0);
+	const [isActive, setIsActive] = useState(true);
+
+	const viewport = useViewportWidth();
+
+	const handleClick = () => {
+		if (viewport === 'mobile') {
+			setIsActive(!isActive);
+		} else {
+			setIsActive(true);
+		}
+	};
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -62,9 +78,9 @@ const FeaturedHomeImages = (props: Props) => {
 	}, []);
 
 	return (
-		<FeaturedHomeImagesWrapper>
+		<FeaturedHomeImagesWrapper onClick={() => handleClick()}>
 			<LayoutGrid>
-				<FeaturedHomeImagesInner ref={ref}>
+				<FeaturedHomeImagesInner ref={ref} $isActive={isActive}>
 					{hasData && data.map((item, i) => (
 						<ImageWrapper
 							$isTop={count === i}

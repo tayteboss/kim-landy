@@ -6,7 +6,9 @@ import useActiveLink from '../../../hooks/useActiveLink';
 import { StyledProps } from '../../../shared/types/types';
 
 const IndexColumnWrapper = styled.div`
-	margin-bottom: ${pxToRem(40)};
+	&.column-block-style {
+		margin-bottom: ${pxToRem(40)};
+	}
 `;
 
 const IndexColumnInner = styled.div``;

@@ -13,7 +13,11 @@ const styles = css`
 
 const EnquiryColumnWrapper = styled.div<StyledProps>`
 	&.column-block-style {
-		margin-bottom: ${(props) => props.$isFooterType ? 0 : pxToRem(80)};
+		margin-bottom: ${(props) => props.$isFooterType ? pxToRem(40) : pxToRem(80)};
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			margin-bottom: ${pxToRem(60)};
+		}
 	}
 `;
 
