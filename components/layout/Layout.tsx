@@ -56,7 +56,10 @@ const Layout = (props: Props) => {
 			/>
 			<Main className="main">{children}</Main>
 			<Footer />
-			<MenuCover menuIsActive={menuIsActive} />
+			<MenuCover
+				menuIsActive={menuIsActive}
+				setMenuIsActive={setMenuIsActive}
+			/>
 			<ScrollDetector />
 		</>
 	);

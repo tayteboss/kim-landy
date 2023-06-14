@@ -42,8 +42,10 @@ export type SiteData ={
 
 export type StyledProps = {
 	$isActive?: boolean;
+	$isHovered?: boolean;
 	$isTop?: boolean;
 	$isFooterType?: boolean;
+	$isThumbnailGalleryActive?: boolean;
 };
 
 export type ContentColumnProps = {
@@ -68,3 +70,18 @@ export type FeaturedHomeImagesType = {
 		url: string;
 	}
 }
+
+export type PhotographyProject = {
+	category?: string;
+	date?: string;
+	gallery?: [];
+	heroImage?: {
+		url?: string;
+	};
+	information?: {};
+	slug?: string;
+	title?: string;
+	thumbnail?: [];
+	galleryLength?: number;
+	setIsHovered: (value: boolean) => void;
+};

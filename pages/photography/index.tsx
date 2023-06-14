@@ -3,11 +3,13 @@ import { getAllPhotography, getSiteData } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../../shared/types/types';
 import { motion } from 'framer-motion';
+import PageHeader from '../../components/layout/PageHeader';
+import ProjectsList from '../../components/blocks/ProjectsList';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {},
+	data: [],
 	siteData: SiteData,
 	pageTransitionVariants: {}
 };
@@ -21,7 +23,6 @@ const Page = (props: Props) => {
 
 	console.log('data', data);
 	console.log('siteData', siteData);
-	console.log('pageTransitionVariants', pageTransitionVariants);
 
 	return (
 	<PageWrapper
@@ -34,7 +35,8 @@ const Page = (props: Props) => {
 			title="Kim Landy - Photography"
 			description={siteData.seoDescription || ''}
 		/>
-		Photography
+		<PageHeader />
+		<ProjectsList data={data} />
 	</PageWrapper>
 	);
 };

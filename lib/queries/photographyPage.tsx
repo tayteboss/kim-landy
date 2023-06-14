@@ -2,7 +2,7 @@ import { imageFragment, richTextFragment } from "./fragments";
 
 const PHOTOGRAPHY_PAGE_QUERY: string = `
 	query Query {
-		allPhotographyProjects {
+		allPhotographyProjects(first: 100) {
 			slug
 			title
 			thumbnail {

@@ -33,9 +33,10 @@ const wrapperVariants = {
 
 type Props = {
 	menuIsActive: boolean;
+	setMenuIsActive: (value: boolean) => void;
 };
 
-const MenuCover = ({ menuIsActive }: Props) => {
+const MenuCover = ({ menuIsActive, setMenuIsActive }: Props) => {
 	return (
 		<AnimatePresence>
 			{menuIsActive && (
@@ -44,6 +45,7 @@ const MenuCover = ({ menuIsActive }: Props) => {
 					initial='hidden'
 					animate='visible'
 					exit='hidden'
+					onClick={() => setMenuIsActive(false)}
 				/>
 			)}
 		</AnimatePresence>

@@ -22,7 +22,7 @@ const AOCInner = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	height: 100vh;
-	height: 100dvh;
+	height: 100lvh;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		grid-column: 3 / 6;
@@ -71,7 +71,7 @@ type Props = {
 };
 
 const AOC = ({ hasVisited }: Props) => {
-	const [IsActive, setIsActive] = useState(hasVisited ? false : true);
+	const [IsActive, setIsActive] = useState(false);
 
 	useEffect(() => {
 		if (IsActive) {
@@ -80,6 +80,15 @@ const AOC = ({ hasVisited }: Props) => {
 			document.body.style.overflow = 'auto';
 		}
 	}, [IsActive]);
+
+	useEffect(() => {
+		if (hasVisited) {
+			setIsActive(false);
+		} else {
+			setIsActive(true);
+		}
+	}, [hasVisited])
+	
 
 	return (
 		<AnimatePresence>

@@ -2,7 +2,7 @@ import { imageFragment } from "./fragments";
 
 const WRITTEN_PAGE_QUERY: string = `
 	query Query {
-		allWrittenProjects {
+		allWrittenProjects(first: 100) {
 			slug
 			title
 			thumbnailImage {

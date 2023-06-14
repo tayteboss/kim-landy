@@ -2,7 +2,7 @@ import { imageFragment, richTextFragment, videoFragment } from "./fragments";
 
 const PRODUCTION_PAGE_QUERY: string = `
 	query Query {
-		allProductionProjects {
+		allProductionProjects(first: 100) {
 			slug
 			title
 			information {
