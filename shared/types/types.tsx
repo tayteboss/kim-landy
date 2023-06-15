@@ -80,7 +80,7 @@ type ThumbnailType = {
 	}
 }
 
-export type PhotographyProject = {
+export type PhotographyProductionProject = {
 	category?: string;
 	date?: string;
 	gallery?: [];
@@ -92,5 +92,12 @@ export type PhotographyProject = {
 	title?: string;
 	thumbnail?: ThumbnailType[] | undefined;
 	galleryLength?: number;
+	thumbnailImage?: {
+		url?: string;
+	};
+	thumbnailVideoSnippet?: {
+		url?: string;
+	};
+	isProduction?: boolean;
 	setIsHovered: (value: boolean) => void;
 };

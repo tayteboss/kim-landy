@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PhotographyProject, StyledProps } from '../../../shared/types/types';
+import { PhotographyProductionProject, StyledProps } from '../../../shared/types/types';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -26,6 +26,30 @@ const ProjectCardWrapper = styled.a`
 			filter: blur(0px);
 		}
 	}
+`;
+
+const VideoOuterWrapper = styled.div`
+	position: relative;
+	padding-top: 80%;
+
+	&:hover {
+		h2 {
+			color: var(--colour-black);
+		}
+	}
+`;
+
+const VideoComponentWrapper = styled.div`
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+`;
+
+const Video = styled.video`
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
 `;
 
 const ImageOuterWrapper = styled.div`
@@ -72,13 +96,16 @@ const MobileTitle = styled.h2`
 	}
 `;
 
-const ProjectCard = (props: PhotographyProject) => {
+const ProjectCard = (props: PhotographyProductionProject) => {
 	const {
 		slug,
 		galleryLength,
 		thumbnail,
 		title,
-		setIsHovered
+		setIsHovered,
+		isProduction,
+		thumbnailImage,
+		thumbnailVideoSnippet
 	} = props;
 
 	const [count, setCount] = useState(0);
@@ -126,39 +153,64 @@ const ProjectCard = (props: PhotographyProject) => {
 	}, []);
 
 	return (
-		<Link href={`/photography/${slug}`} passHref>
+		<Link href={`/${isProduction ? '/production' : '/photography'}/${slug}`} passHref>
 			<ProjectCardWrapper
 				className="project-card"
 				onMouseOver={() => setIsHovered(true)}
 				onMouseOut={() => setIsHovered(false)}
 				ref={ref}
 			>
-				<ImageOuterWrapper
-					onMouseOver={() => setThumbnailGalleryActive(true)}
-					onMouseOut={() => setThumbnailGalleryActive(false)}
-				>
-					{hasThumbnails && thumbnail.map((item: { image: { url: string } }, i) => (
-						<ImageWrapper
-							$isTop={count === i}
-							key={i}
+				{!isProduction ? (
+					<ImageOuterWrapper
+						onMouseOver={() => setThumbnailGalleryActive(true)}
+						onMouseOut={() => setThumbnailGalleryActive(false)}
+					>
+						{hasThumbnails && thumbnail.map((item: { image: { url: string } }, i) => (
+							<ImageWrapper
+								$isTop={count === i}
+								key={i}
+							>
+								<Image
+									src={item?.image?.url}
+									layout="fill"
+									objectFit="cover"
+									priority={i === 0 ? true : false}
+								/>
+							</ImageWrapper>
+						))}
+						{title && (
+							<DesktopTitle>{title}</DesktopTitle>
+						)}
+						<ProjectCardPagination
+							galleryLength={galleryLength}
+							count={count}
+							isThumbnailGalleryActive={isThumbnailGalleryActive}
+						/>
+					</ImageOuterWrapper>
+				) : (
+					thumbnailVideoSnippet?.url && (
+						<VideoOuterWrapper
+							onMouseOver={() => setThumbnailGalleryActive(true)}
+							onMouseOut={() => setThumbnailGalleryActive(false)}
 						>
-							<Image
-								src={item?.image?.url}
-								layout="fill"
-								objectFit="cover"
-								priority={i === 0 ? true : false}
-							/>
-						</ImageWrapper>
-					))}
-					{title && (
-						<DesktopTitle>{title}</DesktopTitle>
-					)}
-					<ProjectCardPagination
-						galleryLength={galleryLength}
-						count={count}
-						isThumbnailGalleryActive={isThumbnailGalleryActive}
-					/>
-				</ImageOuterWrapper>
+							<VideoComponentWrapper className="video-component-wrapper">
+								<Video
+									autoPlay
+									muted
+									playsInline
+									loop
+									preload="auto"
+									poster={thumbnailImage?.url}
+								>
+									<source src={thumbnailVideoSnippet.url} type="video/mp4" />
+								</Video>
+							</VideoComponentWrapper>
+							{title && (
+								<DesktopTitle>{title}</DesktopTitle>
+							)}
+						</VideoOuterWrapper>
+					)
+				)}
 				{title && (
 					<MobileTitle>{title}</MobileTitle>
 				)}

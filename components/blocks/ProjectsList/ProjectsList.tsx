@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LayoutWrapper from '../../common/LayoutWrapper';
 import LayoutGrid from '../../common/LayoutGrid';
 import ProjectCard from '../../elements/ProjectCard';
-import { PhotographyProject, StyledProps } from '../../../shared/types/types';
+import { PhotographyProductionProject, StyledProps } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
 import { useState } from 'react';
 
@@ -195,10 +195,11 @@ const ProjectsListWrapper = styled.div<StyledProps>`
 `;
 
 type Props = {
-	data: PhotographyProject[];
+	data: PhotographyProductionProject[];
+	isProduction: boolean;
 };
 
-const ProjectsList = ({ data }: Props) => {
+const ProjectsList = ({ data, isProduction }: Props) => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	const hasData = data && data?.length > 0;
@@ -207,13 +208,16 @@ const ProjectsList = ({ data }: Props) => {
 		<ProjectsListWrapper $isHovered={isHovered}>
 			<LayoutWrapper>
 				<LayoutGrid>
-					{hasData && data.map((item: PhotographyProject, i) => (
+					{hasData && data.map((item: PhotographyProductionProject, i) => (
 						<ProjectCard
 							slug={item?.slug}
 							galleryLength={item?.thumbnail?.length}
 							thumbnail={item?.thumbnail}
 							title={item?.title}
 							setIsHovered={setIsHovered}
+							isProduction={isProduction}
+							thumbnailImage={item?.thumbnailImage}
+							thumbnailVideoSnippet={item?.thumbnailVideoSnippet}
 							key={i}
 						/>
 					))}

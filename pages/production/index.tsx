@@ -3,13 +3,15 @@ import { getAllProduction, getSiteData } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../../shared/types/types';
 import { motion } from 'framer-motion';
+import PageHeader from '../../components/layout/PageHeader';
+import ProjectsList from '../../components/blocks/ProjectsList';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {};
-	siteData: SiteData;
-	pageTransitionVariants: {};
+	data: [],
+	siteData: SiteData,
+	pageTransitionVariants: {}
 };
 
 const Page = (props: Props) => {
@@ -33,7 +35,8 @@ const Page = (props: Props) => {
 			title="Kim Landy - Production"
 			description={siteData.seoDescription || ''}
 		/>
-		Production
+		<PageHeader marginBottom="80px" />
+		<ProjectsList data={data} isProduction={true} />
 	</PageWrapper>
 	);
 };
