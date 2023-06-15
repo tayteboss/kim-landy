@@ -54,9 +54,10 @@ export type StyledProps = {
 export type ContentColumnProps = {
 	title: string;
 	richText: {
-		about?: {};
-		clients?: {};
-	}
+		about?: {} | undefined;
+		clients?: {} | undefined;
+		credits?: {} | undefined;
+	} | undefined
 }
 
 export type FeaturedProjects = {
@@ -98,6 +99,8 @@ export type PhotographyProductionProject = {
 	thumbnailVideoSnippet?: {
 		url?: string;
 	};
+	fullVideoExternalLink?: string;
 	isProduction?: boolean;
+	credits?: {};
 	setIsHovered: (value: boolean) => void;
 };

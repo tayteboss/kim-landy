@@ -60,7 +60,7 @@ const EnquiryColumn = (props: Props) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
-		rootMargin: '-5%'
+		rootMargin: '-50px'
 	});	
 
 	return (

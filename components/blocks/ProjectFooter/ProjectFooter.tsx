@@ -3,7 +3,7 @@ import LayoutWrapper from '../../common/LayoutWrapper';
 import LayoutGrid from '../../common/LayoutGrid';
 import Link from 'next/link';
 import pxToRem from '../../../utils/pxToRem';
-import { PhotographyProject, StyledProps } from '../../../shared/types/types';
+import { PhotographyProductionProject, StyledProps } from '../../../shared/types/types';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -39,7 +39,7 @@ const ImageWrapper = styled.div<StyledProps>`
 `;
 
 type Props = {
-	data: PhotographyProject;
+	data: PhotographyProductionProject;
 };
 
 const ProjectFooter = ({ data }: Props) => {

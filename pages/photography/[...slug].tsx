@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getSiteData, getPhotographyProject, getNextProject } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { PhotographyProject, SiteData } from '../../shared/types/types';
+import { PhotographyProductionProject, SiteData } from '../../shared/types/types';
 import { getAllPhotography } from '../../lib/datocms';
 import { motion } from 'framer-motion';
 import PageHeader from '../../components/layout/PageHeader';
@@ -13,8 +13,8 @@ import ProjectFooter from '../../components/blocks/ProjectFooter';
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: PhotographyProject;
-	nextProjectData: PhotographyProject;
+	data: PhotographyProductionProject;
+	nextProjectData: PhotographyProductionProject;
 	siteData: SiteData;
 	pageTransitionVariants: {};
 };
@@ -27,36 +27,32 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
-	console.log('data', data);
-	console.log('siteData', siteData);
-	console.log('nextProjectData', nextProjectData);
-
 	return (
-	<PageWrapper
-		variants={pageTransitionVariants}
-		initial="hidden"
-		animate="visible"
-		exit="hidden"
-	>
-		<NextSeo
-			title={`Kim Landy - ${data?.title}`}
-			description={siteData.seoDescription || ''}
-		/>
-		<PageHeader marginBottom="0" />
-		<ProjectHero
-			image={data?.heroImage?.url}
-			title={data?.title}
-			date={data?.date}
-			category={data?.category}
-		/>
-		<ProjectInformation
-			data={data.information}
-		/>
-		<ProjectGallery
-			images={data?.gallery}
-		/>
-		<ProjectFooter data={nextProjectData} />
-	</PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
+			<NextSeo
+				title={`Kim Landy - ${data?.title}`}
+				description={siteData.seoDescription || ''}
+			/>
+			<PageHeader marginBottom="0" />
+			<ProjectHero
+				image={data?.heroImage?.url}
+				title={data?.title}
+				date={data?.date}
+				category={data?.category}
+			/>
+			<ProjectInformation
+				data={data.information}
+			/>
+			<ProjectGallery
+				images={data?.gallery}
+			/>
+			<ProjectFooter data={nextProjectData} />
+		</PageWrapper>
 	);
 };
 
