@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import LayoutGrid from '../../common/LayoutGrid';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import LayoutWrapper from '../../common/LayoutWrapper';
 
-const ProjectHeroWrapper = styled(motion.section)``;
+const ProjectHeroWrapper = styled(motion.section)`
+	.layout-wrapper {
+		width: 100%;
+	}
+`;
 
 const ImageWrapper = styled.div`
 	position: relative;
@@ -18,6 +23,12 @@ const ImageInnerWrapper = styled(motion.div)`
 	position: relative;
 	height: 100%;
 	width: 100%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		img {
+			filter: brightness(0.75);
+		}
+	}
 `;
 
 const ContentWrapper = styled.div`
@@ -32,6 +43,10 @@ const ContentWrapper = styled.div`
 	height: 100%;
 	color: var(--colour-white);
 	mix-blend-mode: difference;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		mix-blend-mode: normal;
+	}
 `;
 
 const Title = styled.h1`
@@ -80,7 +95,7 @@ const ProjectHero = (props: Props) => {
 	const { scrollY } = useScroll();
 	const filter = useTransform(scrollY, [0, viewportHeight], ['blur(0px) brightness(1)', 'blur(3px) brightness(0.75)']);
 	const translateY = useTransform(scrollY, [0, viewportHeight], [0, 50]);
-	const transform = useTransform(scrollY, [0, viewportHeight], ['scale(1)', 'scale(1.2)']);
+	const transform = useTransform(scrollY, [0, viewportHeight], ['scale(1)', 'scale(1.15)']);
 
 	useEffect(() => {
 		setViewportHeight(window.innerHeight);
@@ -112,19 +127,21 @@ const ProjectHero = (props: Props) => {
 					)}
 				</ImageInnerWrapper>
 				<ContentWrapper>
-					<LayoutGrid>
-						{title && (
-							<Title>{title}</Title>
-						)}
-						<ContentInnerWrapper>
-							{date && (
-								<Date>{date}</Date>
+					<LayoutWrapper>
+						<LayoutGrid>
+							{title && (
+								<Title className="column-block-style__title">{title}</Title>
 							)}
-							{category && (
-								<Category>{category}</Category>
-							)}
-						</ContentInnerWrapper>
-					</LayoutGrid>
+							<ContentInnerWrapper className="column-grid-style">
+								{date && (
+									<Date>{date}</Date>
+								)}
+								{category && (
+									<Category>{category}</Category>
+								)}
+							</ContentInnerWrapper>
+						</LayoutGrid>
+					</LayoutWrapper>
 				</ContentWrapper>
 			</ImageWrapper>
 		</ProjectHeroWrapper>

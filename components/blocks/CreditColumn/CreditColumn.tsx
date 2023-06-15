@@ -10,7 +10,13 @@ const CreditColumnWrapper = styled.div`
 
 const CreditColumnInner = styled.div``;
 
-const Title = styled.h2``;
+const Title = styled.h2`
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		&.column-block-style__title {
+			margin-bottom: 0;
+		}
+	}
+`;
 
 const BlockWrapper = styled.div`
 	display: block;

@@ -6,6 +6,8 @@ import { getAllPhotography } from '../../lib/datocms';
 import { motion } from 'framer-motion';
 import PageHeader from '../../components/layout/PageHeader';
 import ProjectHero from '../../components/blocks/ProjectHero';
+import ProjectInformation from '../../components/blocks/ProjectInformation';
+import ProjectGallery from '../../components/blocks/ProjectGallery';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -42,6 +44,12 @@ const Page = (props: Props) => {
 			title={data?.title}
 			date={data?.date}
 			category={data?.category}
+		/>
+		<ProjectInformation
+			data={data.information}
+		/>
+		<ProjectGallery
+			images={data?.gallery}
 		/>
 	</PageWrapper>
 	);

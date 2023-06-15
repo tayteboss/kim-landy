@@ -226,6 +226,12 @@ export const GlobalStyles = createGlobalStyle`
 				}
 			}
 		}
+
+		&--black {
+			& > * {
+				color: var(--colour-black) !important;
+			}
+		}
 	}
 
 	.link-style {
@@ -425,7 +431,7 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 		transform: translateX(15px);
 
-		transition: opacity 300ms ease;
+		transition: opacity 500ms ease;
 
 		&--in-view
 		{
@@ -439,7 +445,7 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 		transform: translateY(15px);
 
-		transition: opacity 300ms cubic-bezier(0.65, 0, 0.35, 1), transform 300ms cubic-bezier(0.65, 0, 0.35, 1);
+		transition: opacity 500ms cubic-bezier(0.65, 0, 0.35, 1), transform 300ms cubic-bezier(0.65, 0, 0.35, 1);
 
 		&--in-view
 		{
@@ -450,15 +456,45 @@ export const GlobalStyles = createGlobalStyle`
 
 	.view-element-scale-up
 	{
-		transform: scale(0.95);
 		opacity: 0;
 
-		transition: opacity 300ms ease, transform 300ms ease;
+		transition: opacity 750ms ease, transform 2000ms ease;
+
+		img {
+			transform: scale(1.05);
+
+			transition: transform 4000ms ease;
+		}
 
 		&--in-view
 		{
 			opacity: 1;
-			transform: scale(1);
+
+			img {
+				transform: scale(1);
+			}
+		}
+	}
+
+	.view-element-scale-up-hero
+	{
+		opacity: 0;
+
+		transition: opacity 750ms ease, transform 2000ms ease;
+
+		.image-wrapper {
+			transform: scale(1.05);
+
+			transition: transform 4000ms ease;
+		}
+
+		&--in-view
+		{
+			opacity: 1;
+
+			.image-wrapper {
+				transform: scale(1);
+			}
 		}
 	}
 
