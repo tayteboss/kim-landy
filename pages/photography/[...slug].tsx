@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getSiteData, getPhotographyProject } from '../../lib/datocms';
+import { getSiteData, getPhotographyProject, getNextProject } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { PhotographyProject, SiteData } from '../../shared/types/types';
 import { getAllPhotography } from '../../lib/datocms';
@@ -8,11 +8,13 @@ import PageHeader from '../../components/layout/PageHeader';
 import ProjectHero from '../../components/blocks/ProjectHero';
 import ProjectInformation from '../../components/blocks/ProjectInformation';
 import ProjectGallery from '../../components/blocks/ProjectGallery';
+import ProjectFooter from '../../components/blocks/ProjectFooter';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
 	data: PhotographyProject;
+	nextProjectData: PhotographyProject;
 	siteData: SiteData;
 	pageTransitionVariants: {};
 };
@@ -20,12 +22,14 @@ type Props = {
 const Page = (props: Props) => {
 	const {
 		data,
+		nextProjectData,
 		siteData,
 		pageTransitionVariants
 	} = props;
 
 	console.log('data', data);
 	console.log('siteData', siteData);
+	console.log('nextProjectData', nextProjectData);
 
 	return (
 	<PageWrapper
@@ -51,6 +55,7 @@ const Page = (props: Props) => {
 		<ProjectGallery
 			images={data?.gallery}
 		/>
+		<ProjectFooter data={nextProjectData} />
 	</PageWrapper>
 	);
 };
@@ -68,12 +73,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
 	const data = await getPhotographyProject(params.slug[0]);
+	const nextProjectData = await getNextProject(data.id);
 	const siteData = await getSiteData();
 
 	return {
 		props: {
 			data,
-			siteData
+			siteData,
+			nextProjectData
 		},
 	};
 }

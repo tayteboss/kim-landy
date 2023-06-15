@@ -47,6 +47,8 @@ export type StyledProps = {
 	$isFooterType?: boolean;
 	$isThumbnailGalleryActive?: boolean;
 	$marginBottom?: string;
+	$transformData?: string;
+	$isChangingPage?: boolean;
 };
 
 export type ContentColumnProps = {
@@ -72,6 +74,12 @@ export type FeaturedHomeImagesType = {
 	}
 }
 
+type ThumbnailType = {
+	image: {
+		url: string;
+	}
+}
+
 export type PhotographyProject = {
 	category?: string;
 	date?: string;
@@ -82,7 +90,7 @@ export type PhotographyProject = {
 	information?: {};
 	slug?: string;
 	title?: string;
-	thumbnail?: [];
+	thumbnail?: ThumbnailType[] | undefined;
 	galleryLength?: number;
 	setIsHovered: (value: boolean) => void;
 };

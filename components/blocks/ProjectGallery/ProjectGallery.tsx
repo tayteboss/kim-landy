@@ -8,6 +8,10 @@ import { useInView } from 'react-intersection-observer';
 const ProjectGalleryWrapper = styled.div`
 	margin-bottom: ${pxToRem(240)};
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(120)};
+	}
+
 	.grid {
 		row-gap: ${pxToRem(120)};
 

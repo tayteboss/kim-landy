@@ -6,6 +6,7 @@ import WRITTEN_PAGE_QUERY from './queries/writtenPage';
 import PRODUCTION_PAGE_QUERY from './queries/productionPage';
 import SINGLE_PRODUCTION_PROJECT_QUERY from './queries/singleProductionProject';
 import SITE_QUERY from './queries/siteData';
+import NEXT_PROJECT_QUERY from './queries/nextProject';
 
 type Request = {
 	query: string;
@@ -82,4 +83,13 @@ export async function getProductionProject(slug: string) {
 	});
 
 	return data?.productionProject;
+}
+
+export async function getNextProject(currentProjectId: string) {
+	const data = await request({
+		query: NEXT_PROJECT_QUERY,
+		variables: { currentProjectId },
+	});
+
+	return data?.allPhotographyProjects[0];
 }
