@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import { getSiteData, getPhotographyProject } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { SiteData } from '../../shared/types/types';
+import { PhotographyProject, SiteData } from '../../shared/types/types';
 import { getAllPhotography } from '../../lib/datocms';
 import { motion } from 'framer-motion';
+import PageHeader from '../../components/layout/PageHeader';
+import ProjectHero from '../../components/blocks/ProjectHero';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {};
+	data: PhotographyProject;
 	siteData: SiteData;
 	pageTransitionVariants: {};
 };
@@ -31,10 +33,16 @@ const Page = (props: Props) => {
 		exit="hidden"
 	>
 		<NextSeo
-			title="COMPLETE"
+			title={`Kim Landy - ${data?.title}`}
 			description={siteData.seoDescription || ''}
 		/>
-		Photography Single
+		<PageHeader marginBottom="0" />
+		<ProjectHero
+			image={data?.heroImage?.url}
+			title={data?.title}
+			date={data?.date}
+			category={data?.category}
+		/>
 	</PageWrapper>
 	);
 };

@@ -46,6 +46,7 @@ export type StyledProps = {
 	$isTop?: boolean;
 	$isFooterType?: boolean;
 	$isThumbnailGalleryActive?: boolean;
+	$marginBottom?: string;
 };
 
 export type ContentColumnProps = {

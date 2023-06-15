@@ -43,7 +43,7 @@ const Page = (props: Props) => {
 			title="Kim Landy - Home"
 			description={siteData.seoDescription || ''}
 		/>
-		<PageHeader />
+		<PageHeader marginBottom="80px" />
 		<ContentColumn
 			title="About"
 			richText={data?.about}

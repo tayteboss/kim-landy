@@ -5,9 +5,9 @@ import LayoutGrid from '../../common/LayoutGrid';
 import useActiveLink from '../../../hooks/useActiveLink';
 import { StyledProps } from '../../../shared/types/types';
 
-const PageHeaderWrapper = styled.div`
+const PageHeaderWrapper = styled.div<StyledProps>`
 	padding: ${pxToRem(16)} 0;
-	margin-bottom: ${pxToRem(80)};
+	margin-bottom: ${(props) => props.$marginBottom};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		opacity: 0;
@@ -40,11 +40,15 @@ const Span = styled.span`
 	white-space: pre;
 `;
 
-const PageHeader = () => {
+type Props = {
+	marginBottom?: string
+};
+
+const PageHeader = ({ marginBottom }: Props) => {
 	const activeLink = useActiveLink();
 
 	return (
-		<PageHeaderWrapper>
+		<PageHeaderWrapper $marginBottom={marginBottom}>
 			<LayoutGrid>
 				<PageHeaderInner>
 					<LinkWrapper>

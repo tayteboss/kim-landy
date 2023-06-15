@@ -35,7 +35,7 @@ const Page = (props: Props) => {
 			title="Kim Landy - Photography"
 			description={siteData.seoDescription || ''}
 		/>
-		<PageHeader />
+		<PageHeader marginBottom="80px" />
 		<ProjectsList data={data} />
 	</PageWrapper>
 	);
