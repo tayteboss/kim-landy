@@ -25,7 +25,7 @@ const ProjectInformation = ({ data }: Props) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
-		rootMargin: '-200px'
+		rootMargin: '-50px'
 	});
 
 	return (

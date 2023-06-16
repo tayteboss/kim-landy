@@ -19,6 +19,10 @@ const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: 0 ${pxToRem(8)};
+	}
 `;
 
 const LinkTag = styled.a``;
@@ -54,40 +58,38 @@ const ProjectFooter = ({ data }: Props) => {
 
 	return (
 		<ProjectFooterWrapper>
-			<LayoutWrapper>
-				<LayoutGrid>
-					{data?.heroImage?.url && (
-						<ImageWrapper
-							$isActive={isHovered}
-						>
-							<Image
-								src={data?.heroImage?.url}
-								layout="fill"
-								objectFit="cover"
-							/>
-						</ImageWrapper>
+			<LayoutGrid>
+				{data?.heroImage?.url && (
+					<ImageWrapper
+						$isActive={isHovered}
+					>
+						<Image
+							src={data?.heroImage?.url}
+							layout="fill"
+							objectFit="cover"
+						/>
+					</ImageWrapper>
+				)}
+				<ContentWrapper className="column-grid-style">
+					{data?.slug && (
+						<Link href={`/photography/${data.slug}`} passHref scroll={false}>
+							<LinkTag
+								className="link-style link-style--animated"
+								onMouseOver={() => setIsHovered(true)}
+								onMouseOut={() => setIsHovered(false)}
+							>
+								Next project
+							</LinkTag>
+						</Link>
 					)}
-					<ContentWrapper className="column-grid-style">
-						{data?.slug && (
-							<Link href={`/photography/${data.slug}`} passHref scroll={false}>
-								<LinkTag
-									className="link-style link-style--animated"
-									onMouseOver={() => setIsHovered(true)}
-									onMouseOut={() => setIsHovered(false)}
-								>
-									Next project
-								</LinkTag>
-							</Link>
-						)}
-						<BackToTopTrigger
-							onClick={() => handleBackToTop()}
-							className="link-style link-style--animated"
-						>
-							Back to top
-						</BackToTopTrigger>
-					</ContentWrapper>
-				</LayoutGrid>
-			</LayoutWrapper>
+					<BackToTopTrigger
+						onClick={() => handleBackToTop()}
+						className="link-style link-style--animated"
+					>
+						Back to top
+					</BackToTopTrigger>
+				</ContentWrapper>
+			</LayoutGrid>
 		</ProjectFooterWrapper>
 	);
 };

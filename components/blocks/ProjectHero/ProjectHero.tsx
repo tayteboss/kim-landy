@@ -61,6 +61,11 @@ const Title = styled.h1`
 	grid-column: 2 / span 2;
 	color: var(--colour-white);
 	text-align: right;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		text-align: left;
+		grid-column: 1 / -1;
+	}
 `;
 
 const ContentInnerWrapper = styled.div`
