@@ -17,15 +17,18 @@ export type MediaType = {
 export type Transitions = {
 	hidden: {
 		opacity: number;
+		filter?: string;
 		transition: {
 			duration: number;
+			delay?: number;
 		}
 	}
 	visible: {
 		opacity: number;
+		filter?: string;
 		transition: {
 			duration: number;
-			delay?: number
+			delay?: number;
 		}
 	}
 };

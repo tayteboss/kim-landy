@@ -311,6 +311,10 @@ export const GlobalStyles = createGlobalStyle`
 			opacity: 0;
 		}
 
+		.header {
+			background: none;
+		}
+
 		.main {
 			opacity: 0;
 		}
@@ -460,7 +464,8 @@ export const GlobalStyles = createGlobalStyle`
 
 		transition: opacity 750ms ease, transform 2000ms ease;
 
-		img {
+		img,
+		video {
 			transform: scale(1.05);
 
 			transition: transform 4000ms ease;
@@ -470,7 +475,8 @@ export const GlobalStyles = createGlobalStyle`
 		{
 			opacity: 1;
 
-			img {
+			img,
+			video {
 				transform: scale(1);
 			}
 		}

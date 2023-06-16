@@ -53,7 +53,7 @@ const FeaturedProductionProject = (props: FeaturedProjects) => {
 				</RichTextWrapper>
 			)}
 			{slug && (
-				<Link href={`/production/${slug}`} passHref>
+				<Link href={`/production/${slug}`} passHref scroll={false}>
 					<LinkTag className="secondary-link-style">
 						View project
 					</LinkTag>

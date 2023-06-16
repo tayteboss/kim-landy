@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { getHomePage, getSiteData } from '../lib/datocms';
 import { NextSeo } from 'next-seo';
-import { FeaturedProjects, SiteData } from '../shared/types/types';
+import { FeaturedProjects, SiteData, Transitions } from '../shared/types/types';
 import PageHeader from '../components/layout/PageHeader';
 import ContentColumn from '../components/blocks/ContentColumn';
 import EnquiryColumn from '../components/blocks/EnquiryColumn';
@@ -11,6 +11,11 @@ import { motion } from 'framer-motion';
 
 const PageWrapper = styled(motion.div)``;
 
+const pageTransitionVariants: Transitions = {
+	hidden: { opacity: 0, transition: { duration: 0.5, delay: 0.25 } },
+	visible: { opacity: 1, transition: { duration: 0.5, delay: 0.25 } },
+};
+
 type Props = {
 	data: {
 		about: {}
@@ -19,18 +24,13 @@ type Props = {
 		featuredImages: [];
 	};
 	siteData: SiteData;
-	pageTransitionVariants: {};
 };
 
 const Page = (props: Props) => {
 	const {
 		data,
 		siteData,
-		pageTransitionVariants
 	} = props;
-
-	console.log('data', data);
-	console.log('siteData', siteData);
 
 	return (
 	<PageWrapper
@@ -41,7 +41,7 @@ const Page = (props: Props) => {
 	>
 		<NextSeo
 			title="Kim Landy - Home"
-			description={siteData.seoDescription || ''}
+			description={siteData?.seoDescription || ''}
 		/>
 		<PageHeader marginBottom="80px" />
 		<ContentColumn

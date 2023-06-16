@@ -11,8 +11,8 @@ import use1vh from '../hooks/use1vh';
 import { Transitions } from '../shared/types/types';
 
 const pageTransitionVariants: Transitions = {
-	hidden: { opacity: 0, transition: { duration: 0.3 } },
-	visible: { opacity: 1, transition: { duration: 0.3, delay: 0.25 } },
+	hidden: { opacity: 0, filter: 'blur(2px)', transition: { duration: 0.5, delay: 0.25 } },
+	visible: { opacity: 1, filter: 'blur(0)',transition: { duration: 0.5, delay: 0.25 } },
 };
 
 type Props = {
@@ -60,6 +60,7 @@ const App = (props: Props) => {
 				<Layout hasVisited={hasVisited}>
 					<AnimatePresence
 						mode="wait"
+						initial={false}
 						onExitComplete={() => handleExitComplete()}
 					>
 						<Component

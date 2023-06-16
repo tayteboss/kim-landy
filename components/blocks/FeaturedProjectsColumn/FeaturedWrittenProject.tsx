@@ -53,7 +53,7 @@ const FeaturedWrittenProject = (props: FeaturedProjects) => {
 				</Excerpt>
 			)}
 			{slug && (
-				<Link href={`/written/${slug}`} passHref>
+				<Link href={`/written/${slug}`} passHref scroll={false}>
 					<LinkTag className="secondary-link-style">
 						View project
 					</LinkTag>

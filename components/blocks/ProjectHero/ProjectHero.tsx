@@ -15,8 +15,8 @@ const ProjectHeroWrapper = styled(motion.section)`
 const ImageWrapper = styled.div`
 	position: relative;
 	width: 100%;
-	height: calc(100vh - 48px);
-	height: calc(100dvh - 48px);
+	height: calc(100vh - 50px);
+	height: calc(100dvh - 50px);
 	overflow: hidden;
 `;
 

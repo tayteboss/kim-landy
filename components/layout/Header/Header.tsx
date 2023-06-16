@@ -24,6 +24,11 @@ const HeaderWrapper = styled.header`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(16)} ${pxToRem(8)};
 	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(3px);
+	}
 `;
 
 const LinkWrapper = styled.div`
@@ -106,7 +111,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 	return (
 		<HeaderWrapper className="header">
 			<LinkWrapper>
-				<Link href="/" passHref>
+				<Link href="/" passHref scroll={false}>
 					<Logo className="link-style">Kim Landy</Logo>
 				</Link>
 			</LinkWrapper>
@@ -130,6 +135,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 							<Link
 								href="/"
 								passHref
+								scroll={false}
 							>
 								<LinkTag
 									className="link-style link-style--animated-right"
@@ -143,6 +149,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 							<Link
 								href="/photography"
 								passHref
+								scroll={false}
 							>
 								<LinkTag
 									className="link-style link-style--animated-right"
@@ -156,6 +163,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 							<Link
 								href="/production"
 								passHref
+								scroll={false}
 							>
 								<LinkTag
 									className="link-style link-style--animated-right"
@@ -169,6 +177,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 							<Link
 								href="/written"
 								passHref
+								scroll={false}
 							>
 								<LinkTag
 									className="link-style link-style--animated-right"
@@ -182,6 +191,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 							<Link
 								href="/about-contact"
 								passHref
+								scroll={false}
 							>
 								<LinkTag
 									className="link-style link-style--animated-right"

@@ -31,9 +31,6 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
-	console.log('data', data);
-	console.log('siteData', siteData);
-
 	return (
 	<PageWrapper
 		variants={pageTransitionVariants}
@@ -43,7 +40,7 @@ const Page = (props: Props) => {
 	>
 		<NextSeo
 			title={`Kim Landy - ${data?.title}`}
-			description={siteData.seoDescription || ''}
+			description={siteData?.seoDescription || ''}
 		/>
 		<PageHeader marginBottom="0" />
 		<ProjectHero
@@ -57,7 +54,7 @@ const Page = (props: Props) => {
 			fullVideoExternalLink={data?.fullVideoExternalLink}
 		/>
 		<ProjectInformation
-			data={data.information}
+			data={data?.information}
 		/>
 		<ContentColumn
 			title="Credits"

@@ -97,7 +97,7 @@ const EnquiryColumn = (props: Props) => {
 					{options?.phone && (
 						<BlockWrapper>
 							<Phone
-								href={`mailto:${options.phone}`}
+								href={`tel:${options.phone}`}
 								className="link-style link-style--animated"
 							>
 								{options.phone}
@@ -114,6 +114,7 @@ const EnquiryColumn = (props: Props) => {
 					{(options?.instagramUrl && options?.instagramHandle) && (
 						<Instagram
 							href={options.instagramUrl}
+							target="_blank"
 							className="link-style link-style--animated"
 						>
 							@{options.instagramHandle}

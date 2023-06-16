@@ -7,7 +7,7 @@ import FeaturedPhotographyProject from './FeaturedPhotographyProject';
 import { useInView } from 'react-intersection-observer';
 import pxToRem from '../../../utils/pxToRem';
 
-const FeaturedProjectsColumnWrapper = styled.div`
+const FeaturedProjectsColumnWrapper = styled.section`
 	&.column-block-style {
 		margin-bottom: ${pxToRem(160)};
 	}

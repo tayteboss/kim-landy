@@ -21,9 +21,6 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
-	console.log('data', data);
-	console.log('siteData', siteData);
-
 	return (
 	<PageWrapper
 		variants={pageTransitionVariants}
@@ -33,7 +30,7 @@ const Page = (props: Props) => {
 	>
 		<NextSeo
 			title="Kim Landy - Written"
-			description={siteData.seoDescription || ''}
+			description={siteData?.seoDescription || ''}
 		/>
 		<PageHeader marginBottom="80px" />
 		<WrittenList data={data} />

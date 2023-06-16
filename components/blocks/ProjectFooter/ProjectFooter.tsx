@@ -69,7 +69,7 @@ const ProjectFooter = ({ data }: Props) => {
 					)}
 					<ContentWrapper className="column-grid-style">
 						{data?.slug && (
-							<Link href={`/photography/${data.slug}`} passHref>
+							<Link href={`/photography/${data.slug}`} passHref scroll={false}>
 								<LinkTag
 									className="link-style link-style--animated"
 									onMouseOver={() => setIsHovered(true)}

@@ -7,17 +7,19 @@ import ProjectCardPagination from './ProjectCardPagination';
 import pxToRem from '../../../utils/pxToRem';
 import useViewportWidth from '../../../hooks/useViewportWidth';
 import throttle from 'lodash.throttle';
+import { useInView } from 'react-intersection-observer';
+import { motion, useTransform, useScroll } from 'framer-motion';
 
-const ProjectCardWrapper = styled.a`
+const ProjectCardWrapper = styled(motion.a)`
 	position: relative;
 	text-decoration: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		position: sticky;
-		top: 48px;
+		top: 50px;
 		background: var(--colour-white);
-		height: calc(100vh - 48px);
-		height: calc(100dvh - 48px);
+		height: calc(100vh - 50px);
+		height: calc(100dvh - 50px);
 		margin-bottom: 0 !important;
 	}
 
@@ -44,6 +46,7 @@ const VideoComponentWrapper = styled.div`
 	inset: 0;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 `;
 
 const Video = styled.video`
@@ -69,6 +72,7 @@ const ImageWrapper = styled.div<StyledProps>`
 	width: 100%;
 	height: 100%;
 	z-index: ${(props) => props.$isTop ? 1 : 0};
+	overflow: hidden;
 `;
 
 const DesktopTitle = styled.h2`
@@ -110,10 +114,28 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 
 	const [count, setCount] = useState(0);
 	const [isThumbnailGalleryActive, setThumbnailGalleryActive] = useState(false);
+	const [viewportHeight, setViewportHeight] = useState(0);
+	const [distanceToTop, setDistanceToTop] = useState(0);
+  
+	const getDistanceToPageTop = (element: HTMLDivElement): number => {
+		const rect = element.getBoundingClientRect();
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		const clientTop = document.documentElement.clientTop || document.body.clientTop || 0;
+		return rect.top + scrollTop - clientTop;
+	};
+
+	const { scrollY } = useScroll();
+const filter = useTransform(scrollY, [distanceToTop - viewportHeight, distanceToTop], ['blur(2px)', 'blur(0px)']);
 
 	const hasThumbnails = thumbnail && thumbnail?.length > 0;
 	const viewport = useViewportWidth();
 	const ref = useRef<HTMLAnchorElement>(null);
+
+	const { ref: ref2, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-50px'
+	});
 
 	useEffect(() => {
 		if (!hasThumbnails || !isThumbnailGalleryActive) return;
@@ -150,20 +172,41 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 		return () => {
 			window.removeEventListener('scroll', throttledHandleScroll);
 		};
+	}, [viewport]);
+
+	useEffect(() => {
+		setViewportHeight(window.innerHeight);
+		window.addEventListener('resize', () => {
+			setViewportHeight(window.innerHeight);
+		});
+
+		if (ref.current) {
+			const distance = getDistanceToPageTop(ref.current);
+			setDistanceToTop(distance);
+		  }
 	}, []);
 
 	return (
-		<Link href={`/${isProduction ? '/production' : '/photography'}/${slug}`} passHref>
+		<Link
+			href={`${isProduction ? '/production' : '/photography'}/${slug}`}
+			passHref
+			scroll={false}
+		>
 			<ProjectCardWrapper
 				className="project-card"
 				onMouseOver={() => setIsHovered(true)}
 				onMouseOut={() => setIsHovered(false)}
 				ref={ref}
+				style={{ filter }}
 			>
 				{!isProduction ? (
 					<ImageOuterWrapper
 						onMouseOver={() => setThumbnailGalleryActive(true)}
 						onMouseOut={() => setThumbnailGalleryActive(false)}
+						ref={ref2}
+						className={`view-element-scale-up ${
+							inView ? 'view-element-scale-up--in-view' : ''
+						}`}
 					>
 						{hasThumbnails && thumbnail.map((item: { image: { url: string } }, i) => (
 							<ImageWrapper
@@ -192,6 +235,10 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 						<VideoOuterWrapper
 							onMouseOver={() => setThumbnailGalleryActive(true)}
 							onMouseOut={() => setThumbnailGalleryActive(false)}
+							ref={ref2}
+							className={`view-element-scale-up ${
+								inView ? 'view-element-scale-up--in-view' : ''
+							}`}
 						>
 							<VideoComponentWrapper className="video-component-wrapper">
 								<Video

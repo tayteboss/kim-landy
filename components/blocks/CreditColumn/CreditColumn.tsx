@@ -40,6 +40,7 @@ const CreditColumn = () => {
 						<Link
 							href="https://tayte.co/"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"

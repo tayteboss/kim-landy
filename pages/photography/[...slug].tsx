@@ -36,7 +36,7 @@ const Page = (props: Props) => {
 		>
 			<NextSeo
 				title={`Kim Landy - ${data?.title}`}
-				description={siteData.seoDescription || ''}
+				description={siteData?.seoDescription || ''}
 			/>
 			<PageHeader marginBottom="0" />
 			<ProjectHero
@@ -46,7 +46,7 @@ const Page = (props: Props) => {
 				category={data?.category}
 			/>
 			<ProjectInformation
-				data={data.information}
+				data={data?.information}
 			/>
 			<ProjectGallery
 				images={data?.gallery}

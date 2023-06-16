@@ -52,7 +52,7 @@ const PageHeader = ({ marginBottom }: Props) => {
 			<LayoutGrid>
 				<PageHeaderInner>
 					<LinkWrapper>
-						<Link href="/photography" passHref>
+						<Link href="/photography" passHref scroll={false}>
 							<LinkTag
 								className="link-style"
 								$isActive={activeLink === "Photography"}
@@ -63,7 +63,7 @@ const PageHeader = ({ marginBottom }: Props) => {
 						<Span>, </Span>
 					</LinkWrapper>
 					<LinkWrapper>
-						<Link href="/production" passHref>
+						<Link href="/production" passHref scroll={false}>
 							<LinkTag
 								className="link-style"
 								$isActive={activeLink === "Production"}
@@ -74,7 +74,7 @@ const PageHeader = ({ marginBottom }: Props) => {
 						<Span>, </Span>
 					</LinkWrapper>
 					<LinkWrapper>
-						<Link href="/written" passHref>
+						<Link href="/written" passHref scroll={false}>
 							<LinkTag
 								className="link-style"
 								$isActive={activeLink === "Written"}
@@ -85,7 +85,7 @@ const PageHeader = ({ marginBottom }: Props) => {
 						<Span>, </Span>
 					</LinkWrapper>
 					<LinkWrapper>
-						<Link href="/about-contact" passHref>
+						<Link href="/about-contact" passHref scroll={false}>
 							<LinkTag
 								className="link-style"
 								$isActive={activeLink === "About + Contact"}

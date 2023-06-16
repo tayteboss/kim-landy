@@ -41,6 +41,7 @@ const IndexColumn = () => {
 						<Link
 							href="/"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"
@@ -54,6 +55,7 @@ const IndexColumn = () => {
 						<Link
 							href="/photography"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"
@@ -67,6 +69,7 @@ const IndexColumn = () => {
 						<Link
 							href="/production"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"
@@ -80,6 +83,7 @@ const IndexColumn = () => {
 						<Link
 							href="/written"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"
@@ -93,6 +97,7 @@ const IndexColumn = () => {
 						<Link
 							href="/about-contact"
 							passHref
+							scroll={false}
 						>
 							<LinkTag
 								className="link-style link-style--animated"

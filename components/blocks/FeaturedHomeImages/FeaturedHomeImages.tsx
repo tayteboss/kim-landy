@@ -5,10 +5,11 @@ import { FeaturedHomeImagesType, StyledProps } from '../../../shared/types/types
 import LayoutGrid from '../../common/LayoutGrid';
 import useViewportWidth from '../../../hooks/useViewportWidth';
 
-const FeaturedHomeImagesWrapper = styled.div`
+const FeaturedHomeImagesWrapper = styled.section`
 	position: fixed;
 	bottom: 0;
 	right: 0;
+	z-index: 10;
 	width: 100%;
 	pointer-events: none;
 `;
