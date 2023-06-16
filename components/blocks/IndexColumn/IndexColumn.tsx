@@ -5,7 +5,7 @@ import pxToRem from '../../../utils/pxToRem';
 import useActiveLink from '../../../hooks/useActiveLink';
 import { StyledProps } from '../../../shared/types/types';
 
-const IndexColumnWrapper = styled.div`
+const IndexColumnWrapper = styled.section`
 	&.column-block-style {
 		margin-bottom: ${pxToRem(40)};
 	}

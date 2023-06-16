@@ -7,6 +7,7 @@ import PRODUCTION_PAGE_QUERY from './queries/productionPage';
 import SINGLE_PRODUCTION_PROJECT_QUERY from './queries/singleProductionProject';
 import SITE_QUERY from './queries/siteData';
 import NEXT_PROJECT_QUERY from './queries/nextProject';
+import ABOUT_CONTACT_PAGE_QUERY from './queries/aboutContactPage';
 
 type Request = {
 	query: string;
@@ -67,13 +68,21 @@ export const getAllWritten = async () => {
 	return data?.allWrittenProjects;
 };
 
-
 export const getAllProduction = async () => {
 	const data = await request({
 		query: PRODUCTION_PAGE_QUERY
 	});
 
 	return data?.allProductionProjects;
+};
+
+
+export const getAboutContactPage = async () => {
+	const data = await request({
+		query: ABOUT_CONTACT_PAGE_QUERY
+	});
+
+	return data?.aboutContactPage;
 };
 
 export async function getProductionProject(slug: string) {

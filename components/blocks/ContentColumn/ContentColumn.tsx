@@ -4,7 +4,7 @@ import LayoutGrid from '../../common/LayoutGrid';
 import RichText from '../../common/RichText';
 import { useInView } from 'react-intersection-observer';
 
-const ContentColumnWrapper = styled.div``;
+const ContentColumnWrapper = styled.section``;
 
 const ContentColumnInner = styled.div``;
 

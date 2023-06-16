@@ -5,7 +5,7 @@ import LayoutGrid from '../../common/LayoutGrid';
 import useActiveLink from '../../../hooks/useActiveLink';
 import { StyledProps } from '../../../shared/types/types';
 
-const PageHeaderWrapper = styled.div<StyledProps>`
+const PageHeaderWrapper = styled.section<StyledProps>`
 	padding: ${pxToRem(16)} 0;
 	margin-bottom: ${(props) => props.$marginBottom};
 

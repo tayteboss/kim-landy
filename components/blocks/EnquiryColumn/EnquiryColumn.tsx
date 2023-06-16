@@ -11,7 +11,7 @@ const styles = css`
 	align-items: flex-start;
 `;
 
-const EnquiryColumnWrapper = styled.div<StyledProps>`
+const EnquiryColumnWrapper = styled.section<StyledProps>`
 	&.column-block-style {
 		margin-bottom: ${(props) => props.$isFooterType ? pxToRem(40) : pxToRem(80)};
 
