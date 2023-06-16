@@ -104,3 +104,13 @@ export type PhotographyProductionProject = {
 	credits?: {};
 	setIsHovered: (value: boolean) => void;
 };
+
+export type WrittenProject = {
+	excerpt?: string;
+	link?: string;
+	slug?: string;
+	title?: string;
+	setIsHovered: (value: boolean) => void;
+};
+
+export type WrittenProjectData = WrittenProject[];

@@ -3,6 +3,8 @@ import { getAllWritten, getSiteData } from '../../lib/datocms';
 import { NextSeo } from 'next-seo';
 import { SiteData } from '../../shared/types/types';
 import { motion } from 'framer-motion';
+import PageHeader from '../../components/layout/PageHeader';
+import WrittenList from '../../components/blocks/WrittenList';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -33,7 +35,8 @@ const Page = (props: Props) => {
 			title="Kim Landy - Written"
 			description={siteData.seoDescription || ''}
 		/>
-		Written
+		<PageHeader marginBottom="80px" />
+		<WrittenList data={data} />
 	</PageWrapper>
 	);
 };

@@ -36,7 +36,7 @@ const Page = (props: Props) => {
 			description={siteData.seoDescription || ''}
 		/>
 		<PageHeader marginBottom="80px" />
-		<ProjectsList data={data} />
+		<ProjectsList data={data} isProduction={false} />
 	</PageWrapper>
 	);
 };

@@ -5,9 +5,6 @@ const WRITTEN_PAGE_QUERY: string = `
 		allWrittenProjects(first: 100) {
 			slug
 			title
-			thumbnailImage {
-				${imageFragment}
-			}
 			link
 			excerpt
 		}

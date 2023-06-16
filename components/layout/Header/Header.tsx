@@ -21,7 +21,7 @@ const HeaderWrapper = styled.header`
 	align-items: center;
 	pointer-events: none;
 
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(16)} ${pxToRem(8)};
 	}
 `;
