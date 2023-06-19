@@ -11,7 +11,8 @@ const AOCWrapper = styled(motion.div)`
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: var(--colour-black);
+	background: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(15px);
 	z-index: 9999;
 	cursor: pointer;
 `;
@@ -35,7 +36,7 @@ const AOCInner = styled.div`
 `;
 
 const Message = styled.p`
-	color: var(--colour-white);
+	color: var(--colour-black);
 	margin-bottom: ${pxToRem(24)};
 `;
 
@@ -45,7 +46,7 @@ const Hint = styled.p`
 	transition: all var(--transition-speed-default) var(--transition-ease);
 
 	&:hover {
-		color: var(--colour-white);
+		color: var(--colour-black);
 	}
 `;
 
@@ -88,10 +89,9 @@ const AOC = ({ hasVisited }: Props) => {
 			setIsActive(true);
 		}
 	}, [hasVisited])
-	
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence initial={false}>
 			{IsActive && (
 				<AOCWrapper
 					variants={wrapperVariants}
