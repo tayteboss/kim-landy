@@ -241,7 +241,7 @@ export const GlobalStyles = createGlobalStyle`
 		transition: all var(--transition-speed-default) var(--transition-ease);
 
 		&:hover {
-			color: var(--colour-black);
+			color: var(--colour-black) !important;
 		}
 
 		&--animated {
@@ -467,8 +467,9 @@ export const GlobalStyles = createGlobalStyle`
 		img,
 		video {
 			transform: scale(1.05);
+			filter: blur(3px);
 
-			transition: transform 4000ms ease;
+			transition: transform 4000ms ease, filter 2000ms ease;
 		}
 
 		&--in-view
@@ -478,6 +479,7 @@ export const GlobalStyles = createGlobalStyle`
 			img,
 			video {
 				transform: scale(1);
+				filter: blur(0);
 			}
 		}
 	}

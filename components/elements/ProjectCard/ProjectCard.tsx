@@ -114,18 +114,6 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 
 	const [count, setCount] = useState(0);
 	const [isThumbnailGalleryActive, setThumbnailGalleryActive] = useState(false);
-	const [viewportHeight, setViewportHeight] = useState(0);
-	const [distanceToTop, setDistanceToTop] = useState(0);
-  
-	const getDistanceToPageTop = (element: HTMLDivElement): number => {
-		const rect = element.getBoundingClientRect();
-		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-		const clientTop = document.documentElement.clientTop || document.body.clientTop || 0;
-		return rect.top + scrollTop - clientTop;
-	};
-
-	const { scrollY } = useScroll();
-const filter = useTransform(scrollY, [distanceToTop - viewportHeight, distanceToTop], ['blur(2px)', 'blur(0px)']);
 
 	const hasThumbnails = thumbnail && thumbnail?.length > 0;
 	const viewport = useViewportWidth();
@@ -174,18 +162,6 @@ const filter = useTransform(scrollY, [distanceToTop - viewportHeight, distanceTo
 		};
 	}, [viewport]);
 
-	useEffect(() => {
-		setViewportHeight(window.innerHeight);
-		window.addEventListener('resize', () => {
-			setViewportHeight(window.innerHeight);
-		});
-
-		if (ref.current) {
-			const distance = getDistanceToPageTop(ref.current);
-			setDistanceToTop(distance);
-		  }
-	}, []);
-
 	return (
 		<Link
 			href={`${isProduction ? '/production' : '/photography'}/${slug}`}
@@ -197,7 +173,6 @@ const filter = useTransform(scrollY, [distanceToTop - viewportHeight, distanceTo
 				onMouseOver={() => setIsHovered(true)}
 				onMouseOut={() => setIsHovered(false)}
 				ref={ref}
-				style={{ filter }}
 			>
 				{!isProduction ? (
 					<ImageOuterWrapper
