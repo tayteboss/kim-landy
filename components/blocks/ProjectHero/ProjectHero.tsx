@@ -62,9 +62,13 @@ const Title = styled.h1`
 	color: var(--colour-white);
 	text-align: right;
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		grid-column: 1 / span 2;
+	}
+
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		text-align: left;
 		grid-column: 1 / -1;
+		text-align: left;
 	}
 `;
 

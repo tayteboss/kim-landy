@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PhotographyProductionProject, StyledProps } from '../../../shared/types/types';
+import { PhotographyProductionProject, StyledProps, ThumbnailType } from '../../../shared/types/types';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import pxToRem from '../../../utils/pxToRem';
 import useViewportWidth from '../../../hooks/useViewportWidth';
 import throttle from 'lodash.throttle';
 import { useInView } from 'react-intersection-observer';
-import { motion, useTransform, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const ProjectCardWrapper = styled(motion.a)`
 	position: relative;
@@ -55,9 +55,9 @@ const Video = styled.video`
 	width: 100%;
 `;
 
-const ImageOuterWrapper = styled.div`
+const ImageOuterWrapper = styled.div<StyledProps>`
 	position: relative;
-	padding-top: 80%;
+	padding-top: ${(props) => props.$use46Ratio ? '150%' : '80%'};
 
 	&:hover {
 		h2 {
@@ -109,7 +109,8 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 		setIsHovered,
 		isProduction,
 		thumbnailImage,
-		thumbnailVideoSnippet
+		thumbnailVideoSnippet,
+		thumbnailsUse46Ratio
 	} = props;
 
 	const [count, setCount] = useState(0);
@@ -182,8 +183,9 @@ const ProjectCard = (props: PhotographyProductionProject) => {
 						className={`view-element-scale-up ${
 							inView ? 'view-element-scale-up--in-view' : ''
 						}`}
+						$use46Ratio={thumbnailsUse46Ratio}
 					>
-						{hasThumbnails && thumbnail.map((item: { image: { url: string } }, i) => (
+						{hasThumbnails && thumbnail.map((item: ThumbnailType, i) => (
 							<ImageWrapper
 								$isTop={count === i}
 								key={i}

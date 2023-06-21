@@ -10,6 +10,7 @@ const SINGLE_PHOTOGRAPHY_PROJECT_QUERY: string = `
 				image {
 					${imageFragment}
 				}
+				use46Ratio
 			}
 			information {
 				${richTextFragment}
@@ -21,6 +22,7 @@ const SINGLE_PHOTOGRAPHY_PROJECT_QUERY: string = `
 				image {
 					${imageFragment}
 				}
+				use46Ratio
 			}
 			date
 			category

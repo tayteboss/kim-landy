@@ -9,7 +9,9 @@ const PHOTOGRAPHY_PAGE_QUERY: string = `
 				image {
 					${imageFragment}
 				}
+				use46Ratio
 			}
+			thumbnailsUse46Ratio
 			information {
 				${richTextFragment}
 			}
@@ -20,6 +22,7 @@ const PHOTOGRAPHY_PAGE_QUERY: string = `
 				image {
 					${imageFragment}
 				}
+				use46Ratio
 			}
 			date
 			category

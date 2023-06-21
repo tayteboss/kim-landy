@@ -52,6 +52,7 @@ export type StyledProps = {
 	$marginBottom?: string;
 	$transformData?: string;
 	$isChangingPage?: boolean;
+	$use46Ratio?: boolean;
 };
 
 export type ContentColumnProps = {
@@ -78,10 +79,11 @@ export type FeaturedHomeImagesType = {
 	}
 }
 
-type ThumbnailType = {
+export type ThumbnailType = {
 	image: {
 		url: string;
 	}
+	use46Ratio?: boolean;
 }
 
 export type PhotographyProductionProject = {
@@ -95,6 +97,7 @@ export type PhotographyProductionProject = {
 	slug?: string;
 	title?: string;
 	thumbnail?: ThumbnailType[] | undefined;
+	thumbnailsUse46Ratio?: boolean;
 	galleryLength?: number;
 	thumbnailImage?: {
 		url?: string;

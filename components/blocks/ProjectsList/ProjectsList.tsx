@@ -218,6 +218,7 @@ const ProjectsList = ({ data, isProduction }: Props) => {
 							isProduction={isProduction}
 							thumbnailImage={item?.thumbnailImage}
 							thumbnailVideoSnippet={item?.thumbnailVideoSnippet}
+							thumbnailsUse46Ratio={item?.thumbnailsUse46Ratio}
 							key={i}
 						/>
 					))}

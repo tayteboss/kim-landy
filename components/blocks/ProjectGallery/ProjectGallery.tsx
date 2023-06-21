@@ -4,6 +4,7 @@ import LayoutGrid from '../../common/LayoutGrid';
 import Image from 'next/image';
 import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
+import { StyledProps } from '../../../shared/types/types';
 
 const ProjectGalleryWrapper = styled.div`
 	margin-bottom: ${pxToRem(240)};
@@ -75,22 +76,23 @@ const ProjectGalleryWrapper = styled.div`
 	}
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.div<StyledProps>`
 	position: relative;
-	padding-top: 80%;
+	padding-top: ${(props) => props.$use46Ratio ? '150%' : '80%'};
 `;
 
 type ImageItem = {
 	image: {
 		url: string;
 	};
+	use46Ratio: boolean;
 };
 
 type Props = {
 images: ImageItem[] | undefined;
 };
 
-const ProjectGalleryCard = ({ image }: { image: string | undefined }) => {
+const ProjectGalleryCard = ({ image, use46Ratio }: { image: string | undefined, use46Ratio: boolean }) => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -103,6 +105,7 @@ const ProjectGalleryCard = ({ image }: { image: string | undefined }) => {
 			className={`image-wrapper view-element-scale-up ${
 				inView ? 'view-element-scale-up--in-view' : ''
 			}`}
+			$use46Ratio={use46Ratio}
 		>
 			{image && (
 				<Image src={image} layout="fill" objectFit="cover" />
@@ -119,7 +122,11 @@ const ProjectGallery = ({ images }: Props) => {
 			<LayoutWrapper>
 				<LayoutGrid>
 					{hasImages && images.map((item, i) => (
-						<ProjectGalleryCard image={item?.image?.url} />
+						<ProjectGalleryCard
+							image={item?.image?.url}
+							use46Ratio={item?.use46Ratio}
+							key={i}
+						/>
 					))}
 				</LayoutGrid>
 			</LayoutWrapper>
