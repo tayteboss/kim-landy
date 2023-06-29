@@ -7,7 +7,7 @@ import { StyledProps } from '../../../shared/types/types';
 
 const IndexColumnWrapper = styled.section`
 	&.column-block-style {
-		margin-bottom: ${pxToRem(40)};
+		padding-bottom: ${pxToRem(40)};
 	}
 `;
 

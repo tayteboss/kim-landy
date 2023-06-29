@@ -358,10 +358,12 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.column-block-style {
-		margin-bottom: ${pxToRem(80)};
+		padding-bottom: ${pxToRem(80)};
+		position: relative;
+		z-index: 5;
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
-			margin-bottom: ${pxToRem(60)};
+			padding-bottom: ${pxToRem(60)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile} {

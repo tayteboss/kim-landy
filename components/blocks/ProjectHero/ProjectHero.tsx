@@ -7,6 +7,9 @@ import LayoutWrapper from '../../common/LayoutWrapper';
 import pxToRem from '../../../utils/pxToRem';
 
 const ProjectHeroWrapper = styled(motion.section)`
+	position: relative;
+	z-index: 1;
+
 	.layout-wrapper {
 		width: 100%;
 	}

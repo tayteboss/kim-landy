@@ -5,8 +5,8 @@ import pxToRem from '../../../utils/pxToRem';
 import RichText from '../../common/RichText';
 import { useInView } from 'react-intersection-observer';
 
-const ProjectInformationWrapper = styled.div`
-	padding: ${pxToRem(120)} 0 ;
+const ProjectInformationWrapper = styled.section`
+	padding: ${pxToRem(120)} 0;
 	background: var(--colour-white);
 	position: relative;
 	z-index: 5;

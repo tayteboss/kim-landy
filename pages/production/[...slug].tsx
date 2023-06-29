@@ -11,11 +11,17 @@ import ContentColumn from '../../components/blocks/ContentColumn';
 import pxToRem from '../../utils/pxToRem';
 
 const PageWrapper = styled(motion.div)`
-	margin-bottom: ${pxToRem(240)};
+	padding-bottom: ${pxToRem(240)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		margin-bottom: ${pxToRem(80)};
+		padding-bottom: ${pxToRem(80)};
 	}
+`;
+
+const Blank = styled.div`
+	height: 50vh;
+	width: 100%;
+	background-color: var(--colour-white);
 `;
 
 type Props = {
@@ -60,6 +66,7 @@ const Page = (props: Props) => {
 			title="Credits"
 			richText={data?.credits}
 		/>
+		{/* <Blank /> */}
 	</PageWrapper>
 	);
 };

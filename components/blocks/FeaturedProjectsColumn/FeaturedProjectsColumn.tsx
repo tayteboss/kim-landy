@@ -9,7 +9,7 @@ import pxToRem from '../../../utils/pxToRem';
 
 const FeaturedProjectsColumnWrapper = styled.section`
 	&.column-block-style {
-		margin-bottom: ${pxToRem(160)};
+		padding-bottom: ${pxToRem(160)};
 	}
 `;
 
