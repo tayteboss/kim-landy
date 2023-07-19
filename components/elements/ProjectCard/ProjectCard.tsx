@@ -57,7 +57,7 @@ const Video = styled.video`
 
 const ImageOuterWrapper = styled.div<StyledProps>`
 	position: relative;
-	padding-top: ${(props) => props.$use46Ratio ? '150%' : '80%'};
+	padding-top: ${(props) => props.$use46Ratio ? '125%' : '80%'};
 
 	&:hover {
 		h2 {
