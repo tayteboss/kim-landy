@@ -181,10 +181,12 @@ const ProjectsListWrapper = styled.div<StyledProps>`
 
 		&:nth-child(12n + 12) {
 			grid-column: 6 / span 4;
+			margin-bottom: ${pxToRem(240)};
 
 			@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 				grid-column: 3 / span 3;
 				padding-top: 0;
+				margin-bottom: ${pxToRem(80)};
 			}
 
 			@media ${(props) => props.theme.mediaBreakpoints.mobile} {
