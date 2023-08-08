@@ -182,7 +182,7 @@ export const GlobalStyles = createGlobalStyle`
 		a {
 			color: var(--colour-black400);
 
-			&:not():last-child {
+			&:not(:last-child) {
 				margin-bottom: ${pxToRem(16)};
 			}
 		}
