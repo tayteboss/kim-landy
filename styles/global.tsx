@@ -367,7 +367,8 @@ export const GlobalStyles = createGlobalStyle`
 		}
 
 		@media ${theme.mediaBreakpoints.mobile} {
-			padding: 0 ${pxToRem(8)};
+			padding-left: ${pxToRem(8)};
+			padding-right: ${pxToRem(8)};
 		}
 
 		&__title {

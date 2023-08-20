@@ -9,6 +9,7 @@ import ProjectHero from '../../components/blocks/ProjectHero';
 import ProjectInformation from '../../components/blocks/ProjectInformation';
 import ContentColumn from '../../components/blocks/ContentColumn';
 import pxToRem from '../../utils/pxToRem';
+import { useEffect } from 'react';
 
 const PageWrapper = styled(motion.div)`
 	padding-bottom: ${pxToRem(240)};
@@ -37,37 +38,40 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
-	<PageWrapper
-		variants={pageTransitionVariants}
-		initial="hidden"
-		animate="visible"
-		exit="hidden"
-	>
-		<NextSeo
-			title={`Kim Landy - ${data?.title}`}
-			description={siteData?.seoDescription || ''}
-		/>
-		<PageHeader marginBottom="0" />
-		<ProjectHero
-			image={data?.heroImage?.url}
-			title={data?.title}
-			date={data?.date}
-			category={data?.category}
-			isProduction={true}
-			thumbnailImage={data?.thumbnailImage}
-			thumbnailVideoSnippet={data?.thumbnailVideoSnippet}
-			fullVideoExternalLink={data?.fullVideoExternalLink}
-		/>
-		<ProjectInformation
-			data={data?.information}
-		/>
-		<ContentColumn
-			title="Credits"
-			richText={data?.credits}
-		/>
-		{/* <Blank /> */}
-	</PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
+		>
+			<NextSeo
+				title={`Kim Landy - ${data?.title}`}
+				description={siteData?.seoDescription || ''}
+			/>
+			<PageHeader marginBottom="0" />
+			<ProjectHero
+				image={data?.heroImage?.url}
+				title={data?.title}
+				date={data?.date}
+				category={data?.category}
+				isProduction={true}
+				thumbnailImage={data?.thumbnailImage}
+				thumbnailVideoSnippet={data?.thumbnailVideoSnippet}
+				fullVideoExternalLink={data?.fullVideoExternalLink}
+			/>
+			<ProjectInformation
+				data={data?.information}
+			/>
+			<ContentColumn
+				title="Credits"
+				richText={data?.credits}
+			/>
+		</PageWrapper>
 	);
 };
 
