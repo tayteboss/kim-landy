@@ -18,6 +18,8 @@ const ContentColumn = (props: ContentColumnProps) => {
 		richText
 	} = props;
 
+	const isClientBlock = title === 'Clients';
+
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -26,7 +28,7 @@ const ContentColumn = (props: ContentColumnProps) => {
 
 	return (
 		<ContentColumnWrapper
-			className="column-block-style"
+			className={`column-block-style column-block-style--${isClientBlock ? 'no-mb' : 'default'}`}
 			ref={ref}
 		>
 			<LayoutGrid>

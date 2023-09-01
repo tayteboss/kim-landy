@@ -6,6 +6,7 @@ import FeaturedProductionProject from './FeaturedProductionProject';
 import FeaturedPhotographyProject from './FeaturedPhotographyProject';
 import { useInView } from 'react-intersection-observer';
 import pxToRem from '../../../utils/pxToRem';
+import React from 'react';
 
 const FeaturedProjectsColumnWrapper = styled.section`
 	&.column-block-style {
@@ -56,7 +57,7 @@ const FeaturedProjectsColumn = (props: Props) => {
 						const isWritten = item._modelApiKey === 'written_project';
 
 						return (
-							<>
+							<React.Fragment key={i}>
 								{isPhotography && (
 									<FeaturedPhotographyProject
 										key={i}
@@ -81,7 +82,7 @@ const FeaturedProjectsColumn = (props: Props) => {
 										excerpt={item?.excerpt}
 									/>
 								)}
-							</>
+							</React.Fragment>
 						);
 					})}
 				</FeaturedProjectsColumnInner>

@@ -68,7 +68,7 @@ const FeaturedHomeImages = (props: Props) => {
 					return count + 1;
 				}
 			});
-		}, 500);
+		}, 1000);
 
 		const height = ref.current?.clientHeight;
 		document.documentElement.style.setProperty('--footer-image-height', `${height}px`);

@@ -389,6 +389,12 @@ export const GlobalStyles = createGlobalStyle`
 				top: initial;
 			}
 		}
+
+		&--no-mb {
+			* {
+				margin-bottom: 0 !important;
+			}
+		}
 	}
 
 	.secondary-link-style {

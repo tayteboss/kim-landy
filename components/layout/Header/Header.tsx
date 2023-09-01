@@ -40,6 +40,7 @@ const Logo = styled.a``;
 const MenuTrigger = styled.button<StyledProps>`
 	pointer-events: ${(props) => props.$isActive ? 'auto' : 'none'};
 	opacity: ${(props) => props.$isActive ? 1 : 0};
+	position: relative;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
@@ -116,7 +117,7 @@ const Header = ({ menuIsActive, setMenuIsActive }: Props) => {
 				</Link>
 			</LinkWrapper>
 			<MenuTrigger
-				className="link-style menu-trigger"
+				className="menu-trigger"
 				$isActive={scrolled || viewport === 'tabletPortrait' || viewport === 'mobile'}
 				onClick={() => setMenuIsActive(!menuIsActive)}
 			>
