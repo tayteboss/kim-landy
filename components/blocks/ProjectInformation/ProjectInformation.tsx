@@ -6,7 +6,7 @@ import RichText from '../../common/RichText';
 import { useInView } from 'react-intersection-observer';
 
 const ProjectInformationWrapper = styled.section`
-	padding: ${pxToRem(120)} 0;
+	padding: ${pxToRem(120)} 0 ${pxToRem(240)};
 	background: var(--colour-white);
 	position: relative;
 	z-index: 5;
