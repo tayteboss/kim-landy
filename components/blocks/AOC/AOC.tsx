@@ -23,7 +23,7 @@ const AOCInner = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	height: 100vh;
-	height: 100lvh;
+	height: 100dvh;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		grid-column: 3 / 6;
